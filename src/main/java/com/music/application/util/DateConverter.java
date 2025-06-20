@@ -6,8 +6,8 @@ import java.time.format.DateTimeParseException;
 
 public class DateConverter {
 
-    public static final String DATE_PATTERN = "dd/MM/yyyy";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
     public static LocalDate parse(String dateString) {
         if (dateString == null || dateString.isEmpty()) {
@@ -16,7 +16,7 @@ public class DateConverter {
         try {
             return LocalDate.parse(dateString, FORMATTER);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("Invalid date format, expected " + DATE_PATTERN + ": " + dateString, e);
+            throw new IllegalArgumentException("Invalid date format, expected " + DATE_FORMAT + ": " + dateString, e);
         }
     }
 

@@ -20,7 +20,7 @@ public class EmployeeMapper {
     @Autowired
     CustomerService customerService;
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public EmployeeDTO toDTO(Employee employee) {
         EmployeeDTO dto = new EmployeeDTO();

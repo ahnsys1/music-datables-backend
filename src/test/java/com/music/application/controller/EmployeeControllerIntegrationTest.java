@@ -1,5 +1,7 @@
 package com.music.application.controller;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.music.application.dto.EmployeeDTO;
 import com.music.application.entity.Employee;
 import com.music.application.service.EmployeeService;
+import com.music.application.util.DateConverter;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -35,8 +38,9 @@ public class EmployeeControllerIntegrationTest {
         employeeDTO.setFirstName("IntegrationTest");
         employeeDTO.setLastName("Employee");
         employeeDTO.setTitle("QA");
-        employeeDTO.setBirthDate(java.time.LocalDate.of(1990, 1, 1, 0, 0));
-        employeeDTO.setHireDate(java.time.LocalDate.of(2020, 1, 1, 0, 0));
+        // Use DateConverter for dates (US notation yyyy-MM-dd)
+        employeeDTO.setBirthDate(DateConverter.format(LocalDate.of(1990, 1, 10)));
+        employeeDTO.setHireDate(DateConverter.format(LocalDate.of(2020, 1, 1)));
         employeeDTO.setAddress("123 Test St");
         employeeDTO.setCity("Testville");
         employeeDTO.setState("TS");

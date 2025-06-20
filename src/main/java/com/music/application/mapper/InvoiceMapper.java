@@ -1,8 +1,5 @@
 package com.music.application.mapper;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import org.springframework.stereotype.Component;
 
 import com.music.application.dto.InvoiceDTO;
@@ -11,8 +8,6 @@ import com.music.application.util.DateConverter;
 
 @Component
 public class InvoiceMapper {
-
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DateConverter.DATE_FORMAT);
 
     public InvoiceDTO toDTO(Invoice invoice) {
         InvoiceDTO dto = new InvoiceDTO();

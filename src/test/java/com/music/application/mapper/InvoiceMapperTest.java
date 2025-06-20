@@ -19,7 +19,7 @@ public class InvoiceMapperTest {
         invoice.setInvoiceDate(LocalDate.of(2025, 6, 19));
 
         InvoiceDTO dto = mapper.toDTO(invoice);
-        assertEquals("19/06/2025", dto.getInvoiceDate());
+        assertEquals("2025-06-19", dto.getInvoiceDate());
 
         Invoice entity = mapper.toEntity(dto);
         assertEquals(LocalDate.of(2025, 6, 19), entity.getInvoiceDate());

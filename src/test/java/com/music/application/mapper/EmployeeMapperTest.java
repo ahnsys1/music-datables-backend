@@ -22,11 +22,22 @@ public class EmployeeMapperTest {
         employee.setHireDate(LocalDate.of(2020, 1, 1));
 
         EmployeeDTO dto = mapper.toDTO(employee);
-        assertEquals("19/06/1990", dto.getBirthDate());
-        assertEquals("01/01/2020", dto.getHireDate());
+        assertEquals("1990-06-19", dto.getBirthDate());
+        assertEquals("2020-01-01", dto.getHireDate());
 
         Employee entity = mapper.toEntity(dto);
         assertEquals(LocalDate.of(1990, 6, 19), entity.getBirthDate());
         assertEquals(LocalDate.of(2020, 1, 1), entity.getHireDate());
+    }
+
+    @Test
+    void testEmployeeDateMapping() {
+        // Correct way to set a date
+        LocalDate expectedDate = LocalDate.of(2023, 6, 20); // yyyy-MM-dd
+
+        Employee employee = new Employee();
+        employee.setHireDate(expectedDate);
+
+        assertEquals(expectedDate, employee.getHireDate());
     }
 }

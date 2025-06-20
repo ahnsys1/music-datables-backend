@@ -41,7 +41,7 @@ public class InvoiceControllerIntegrationTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        objectMapper.setDateFormat(new SimpleDateFormat(DateConverter.DATE_PATTERN)); // Use DateConverter's pattern
+        objectMapper.setDateFormat(new SimpleDateFormat(DateConverter.DATE_FORMAT)); // Use DateConverter's pattern
         // Create customer
         Customer customer = new Customer();
         customer.setFirstName("IntegrationTest");
@@ -50,7 +50,7 @@ public class InvoiceControllerIntegrationTest {
         customer = customerService.save(customer);
         InvoiceDTO invoiceDTO = new InvoiceDTO();
         invoiceDTO.setCustomerId(customer.getCustomerId());
-        invoiceDTO.setInvoiceDate(DateConverter.format(DateConverter.parse("24/05/2025"))); // Use DateConverter for date string
+        invoiceDTO.setInvoiceDate(DateConverter.format(DateConverter.parse("2025-05-13"))); // Use DateConverter for date string
         invoiceDTO.setTotal(100.0);
         String json = objectMapper.writeValueAsString(invoiceDTO);
         // Create
